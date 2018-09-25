@@ -117,34 +117,33 @@ function findStr(str, long) {
 console.log(findStr('hi', 'dasdhidasdahidashi'));
 
 // Question 10
-// Could also cast the int into a string and loop through it
 // Function to split number into its digits
 function splitNumberIntoDigits(num) {
   const digits = num.toString().split('');
   const realDigits = digits.map(Number);
   return realDigits;
 }
-
+// Function to determine if number is self dividing
+function isNumberSelfDividing(num) {
+  const digitsArray = splitNumberIntoDigits(num);
+  for (let digit = 0; digit < digitsArray.length; digit += 1) {
+    if (num % digitsArray[digit] !== 0) {
+      return false;
+    }
+  }
+  return true;
+}
 function selfDividingNumbers(left, right) {
   const isSelfDividingArray = [];
-  let count = 0;
   for (let num = left; num <= right; num += 1) {
-    const digitsArray = splitNumberIntoDigits(num);
-    for (let digit = 0; digit < digitsArray.length; digit += 1) {
-      if (num % digitsArray[digit] !== 0) {
-        break;
-      } else if (num % digitsArray[digit] === 0) {
-        count += 1;
-      }
-    }
-    if (count === digitsArray.length) {
+    const selfDividingBool = isNumberSelfDividing(num);
+    if (selfDividingBool === true) {
       isSelfDividingArray.push(num);
     }
-    count = 0;
   }
   return isSelfDividingArray;
 }
-console.log(selfDividingNumbers(12, 21));
+console.log(selfDividingNumbers(1, 22));
 
 // Question 11
 function moveZeros(nums) {
