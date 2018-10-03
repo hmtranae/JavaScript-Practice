@@ -18,16 +18,14 @@ printIntRev(100);
 
 // Question 3
 function checkInput(x) {
-  switch (typeof x) {
-    case 'number':
-      return 'number';
-    case 'string':
-      return 'string';
-    case 'boolean':
-      return 'boolean';
-    default:
-      return -1;
+  if (
+    typeof x === 'string' ||
+    typeof x === 'boolean' ||
+    typeof x === 'number'
+  ) {
+    return typeof x;
   }
+  return -1;
 }
 console.log(checkInput('uhh'));
 console.log(checkInput(true));
