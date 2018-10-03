@@ -35,9 +35,11 @@ console.log(checkInput({ name: 'Hieu' }));
 // Question 4
 function simpleEvenAdding(num) {
   let sum = 2;
+  // If number less than 2, return 0
   if (num < 2) {
     return 0;
   }
+  // Start summing at 4
   for (let i = 4; i <= num; i += 1) {
     if (i % 2 === 0) {
       sum += i;
@@ -50,9 +52,11 @@ console.log(simpleEvenAdding(17));
 // Question 5
 function letterCapitalize(str) {
   const wordArray = str.split(' ');
+  // array capitalize will capitalize first letter of each word
   const capitalize = wordArray.map(
     x => x.charAt(0).toUpperCase() + x.substring(1)
   );
+  // join array capitalize with spaces betweeen each element
   return capitalize.join(' ');
 }
 console.log(letterCapitalize('hello world'));
@@ -61,6 +65,7 @@ console.log(letterCapitalize('you cannot find the answer online'));
 // Question 6
 function simpleReverse(str) {
   let reversed = '';
+  // Starts at end of str and ends at str[0]
   for (let i = str.length - 1; i >= 0; i -= 1) {
     reversed += str[i];
   }
@@ -95,6 +100,7 @@ console.log(findDiff([1, 2, 4, 6, 20, 3]));
 function timeConvert(num) {
   const hour = Math.floor(num / 60);
   const min = num % 60;
+  // ES6 literal string
   return `${hour.toString()}:${min.toString()}`;
 }
 console.log(timeConvert(59));
@@ -106,6 +112,7 @@ function findStr(str, long) {
   let countStrInLong = 0;
   const strLength = str.length;
   for (let i = 0; i <= long.length - strLength; i += 1) {
+    // Look up .substring method
     if (long.substring(i, i + strLength) === str) {
       countStrInLong += 1;
     }
@@ -145,9 +152,11 @@ console.log(selfDividingNumbers(1, 22));
 
 // Question 11
 function moveZeros(nums) {
+  // Starts looking for 0's at the end of array
   let i = nums.length;
   while (i >= 0) {
     if (nums[i] === 0) {
+      // Removes the zero at that index and pushes 0 to the end
       nums.splice(i, 1);
       nums.push(0);
     }
