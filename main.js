@@ -1,12 +1,12 @@
 // Question 1
 function printInt(n) {
-  let i = 0;
+  let i = 1;
   while (i <= n) {
     console.log(i);
     i += 1;
   }
 }
-printInt(100);
+printInt(10);
 
 // Question 2
 function printIntRev(n) {
