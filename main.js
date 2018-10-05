@@ -170,9 +170,13 @@ console.log(moveZeros([0, 1, 0, 3, 12]));
 function average(arr) {
   let sum = 0;
   const numArr = arr.length;
+  if (numArr === 0) {
+    return 0;
+  }
   arr.forEach(element => {
     sum += element;
   });
   return sum / numArr.toFixed(2);
 }
 console.log(average([7, 1432, 12, 13, 100]));
+console.log(average([]));
