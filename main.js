@@ -85,6 +85,9 @@ console.log(simpleReverse('Who let the dogs out'));
 function findDiff(arr) {
   let max = arr[0];
   let min = arr[0];
+  if (arr.length === 0) {
+    return 'Your array is empty!';
+  }
   arr.forEach(element => {
     if (element > max) {
       max = element;
