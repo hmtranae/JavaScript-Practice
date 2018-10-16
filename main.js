@@ -1,22 +1,20 @@
-// Question 1
+// Question 1: print all natural numbers from 1 to n
 function printInt(n) {
-  let i = 1;
-  while (i <= n) {
+  for (let i = 1; i <= n; i++) {
     console.log(i);
-    i += 1;
   }
 }
 printInt(10);
 
-// Question 2
+// Question 2: print all natural numbers in reverse from n to 1
 function printIntRev(n) {
   for (let i = n; i > 0; i -= 1) {
     console.log(i);
   }
 }
-printIntRev(100);
+printIntRev(10);
 
-// Question 3
+// Question 3: return type of x as a string 
 function checkInput(x) {
   if (
     typeof x === 'string' ||
@@ -25,91 +23,66 @@ function checkInput(x) {
   ) {
     return typeof x;
   }
-  return -1;
+  return -1; // if not a string, boolean or number
 }
 console.log(checkInput('uhh'));
 console.log(checkInput(true));
 console.log(checkInput(52));
 console.log(checkInput({ name: 'Hieu' }));
 
-// Question 4
+// Question 4: return sum of all even numbers from 1 to num
 function simpleEvenAdding(num) {
-  let sum = 2;
-  // If number less than 2, return 0
   if (num < 2) {
     return 0;
   }
-  // Start summing at 4
-  for (let i = 4; i <= num; i += 1) {
-    if (i % 2 === 0) {
-      sum += i;
-    }
+  let sum = 2;
+  for (let i = 4; i <= num; i += 2) {
+    sum += i;
   }
   return sum;
 }
-console.log(simpleEvenAdding(17));
+console.log(simpleEvenAdding(10));
 
-// Question 5
+// Question 5: capitalizes first letter of each word in str
 function letterCapitalize(str) {
-  const wordArray = str.split(' ');
-  // array capitalize will capitalize first letter of each word
-  const capitalize = wordArray.map(
-    x => x.charAt(0).toUpperCase() + x.substring(1)
-  );
-  // join array capitalize with spaces betweeen each element
-  return capitalize.join(' ');
+  str = str.toLowerCase()
+    .split(' ')
+    .map((word) => word.charAt(0).toUpperCase() + word.substring(1))
+    .join(' ');
+  return str;
 }
 console.log(letterCapitalize('hello world'));
 console.log(letterCapitalize('you cannot find the answer online'));
 
-// Question 6
+// Question 6: return string in reversed order
 function simpleReverse(str) {
-  let reversed = '';
-  // Starts at end of str and ends at str[0]
-  for (let i = str.length - 1; i >= 0; i -= 1) {
-    reversed += str[i];
-  }
-  return reversed;
-  /*
-    Can also use reverse() method for arrays
-    return str
+  return str
     .split('')
     .reverse()
     .join('');
-  */
 }
 console.log(simpleReverse('I love Code'));
 console.log(simpleReverse('Who let the dogs out'));
 
-// Question 7
+// Question 7: return difference between max and min value in array
 function findDiff(arr) {
-  let max = arr[0];
-  let min = arr[0];
   if (arr.length === 0) {
     return 'Your array is empty!';
   }
-  arr.forEach(element => {
-    if (element > max) {
-      max = element;
-    } else if (element < min) {
-      min = element;
-    }
-  });
-  return max - min;
+  return Math.max(...arr) - Math.min(...arr);
 }
 console.log(findDiff([1, 2, 4, 6, 20, 3]));
 
-// Question 8
+// Question 8: given paramter, returns number of hours and minutes 
 function timeConvert(num) {
   const hour = Math.floor(num / 60);
   const min = num % 60;
-  // ES6 literal string
   return `${hour.toString()}:${min.toString()}`;
 }
 console.log(timeConvert(59));
 console.log(timeConvert(97));
 
-// Question 9
+// Question 9: returns how many str in long
 function findStr(str, long) {
   // Window Sliding Algorithm
   let countStrInLong = 0;
@@ -122,20 +95,15 @@ function findStr(str, long) {
   }
   return countStrInLong;
 }
-console.log(findStr('hi', 'dasdhidasdahidashi'));
+console.log(findStr('hi', 'dasdhidasdahihihidashi'));
 
-// Question 10
-// Function to split number into its digits
-function splitNumberIntoDigits(num) {
-  const digits = num.toString().split('');
-  const realDigits = digits.map(Number);
-  return realDigits;
-}
+// Question 10: return array of all possible self dividing numbers given a range
 // Function to determine if number is self dividing
 function isNumberSelfDividing(num) {
-  const digitsArray = splitNumberIntoDigits(num);
-  for (let digit = 0; digit < digitsArray.length; digit += 1) {
-    if (num % digitsArray[digit] !== 0) {
+  const digits = num.toString().split('');
+  const realDigits = digits.map(Number);
+  for (const digit of realDigits) {
+    if (num % digit !== 0) {
       return false;
     }
   }
@@ -172,14 +140,13 @@ console.log(moveZeros([0, 1, 0, 3, 12]));
 // Question 12
 function average(arr) {
   let sum = 0;
-  const numArr = arr.length;
-  if (numArr === 0) {
+  if (arr.length === 0) {
     return 0;
   }
   arr.forEach(element => {
     sum += element;
   });
-  return sum / numArr.toFixed(2);
+  return sum / arr.length.toFixed(2);
 }
 console.log(average([7, 1432, 12, 13, 100]));
 console.log(average([]));
